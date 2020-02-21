@@ -1,0 +1,18 @@
+Flopman game:
+   [+] Name = Flopman - Its a kinda like slenderman game
+   [+] Game jam length = 5d - Time I want to spend = tonight and tomorrow
+   Rendering engine:
+      [+] It needs to look good and not half done so it will be a bit of a challenge to do in the time and to make it look good
+      [] Make world format
+      [] Make sprites
+      [] Make basic shape rendering
+      [] Make ground
+      [] FOG!!!!! - this will mask most rendering oddness
+      [] Movement
+   Game:
+      [] Make spawning of entity's
+      [] Procedurally generating terrain
+      [] Make UI
+      [] Implement damage
+      [] make flopping animation
+   [] Polish in the rest of my time
