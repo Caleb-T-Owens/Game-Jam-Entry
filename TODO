@@ -3,9 +3,9 @@ Flopman game:
    [+] Game jam length = 5d - Time I want to spend = tonight and tomorrow
    Rendering engine:
       [+] It needs to look good and not half done so it will be a bit of a challenge to do in the time and to make it look good
-      [] Make world format
+      [+] Make world format
       [] Make sprites
-      [] Make basic shape rendering
+      [+] Make basic shape rendering | not tested
       [] Make ground
       [] FOG!!!!! - this will mask most rendering oddness
       [] Movement
@@ -15,4 +15,4 @@ Flopman game:
       [] Make UI
       [] Implement damage
       [] make flopping animation
-   [] Polish in the rest of my time
+   [] Polish in the rest of my time | thats just not happening
