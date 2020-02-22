@@ -1,6 +1,6 @@
 import {Entity} from "./entity.js";
 import {Coord} from "./coord.js";
-export class renderer {
+export class Renderer {
    /**
     * @function constructor
     * @param {function} post 
