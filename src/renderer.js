@@ -12,6 +12,7 @@ export class Renderer {
       this.cameraAngle = 0;
       this.cameraPosition = new Coord(0, 0);
       this.entityList = [];
+      this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
    }
 
    /**
