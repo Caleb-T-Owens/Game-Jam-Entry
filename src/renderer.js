@@ -74,6 +74,8 @@ export class Renderer {
    } 
 
    loop () {
+      this.ctx.fillStyle = "#111111";
+      this.ctx.fillRect(0,0,500,500)
       class EntityDepthCouple {
          /**
           * @function constructor
@@ -104,16 +106,15 @@ export class Renderer {
 
       entityListByDepth.forEach((entityDepthCouple) => {
          let angleRelativeToCamera = this.getAngleRelativeToTheCamera(entityDepthCouple.entity);
-
          if ((angleRelativeToCamera < 0.90) || (angleRelativeToCamera > -0.90)) {
 
-            let scale = this.getDistanceFromCamera(entityDepthCouple.entity);
+            let scale = 1/this.getDistanceFromCamera(entityDepthCouple.entity);
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
 
-            let x = this.map(angleRelativeToCamera, -0.79, 0.79, 0, this.ctx.width);
+            let x = this.map(angleRelativeToCamera, -0.79, 0.79, 0, 500);
             x -= scaledTextureWidth / 2;
-            let y = (this.ctx.height / 2) - (scaledTextureHeight / 2);
+            let y = (500 / 2) - (scaledTextureHeight / 2);
 
             this.ctx.drawImage(entityDepthCouple.entity.texture, x, y, scaledTextureWidth, scaledTextureHeight);
          }
