@@ -30,14 +30,14 @@ export class Renderer {
       /*
       if (dy != 0) { // because we cant divide by 0
          let gradient = dx / dy;
-         angle = Math.atan(1/gradient);
+         trueAngle = Math.atan(1/gradient);
       }
 
       if (entity.coords.y < this.cameraPosition.y) {
-         if (angle > 0) { // if positive
-            angle += Math.PI;
+         if (trueAngle > 0) { // if positive
+            trueAngle += Math.PI;
          } else {
-            angle -= Math.PI;
+            trueAngle -= Math.PI;
          }
       }
       */
