@@ -95,16 +95,16 @@ export class Renderer {
       }
 
       let entityListByDepth = [];
-      
+
       this.entityList.forEach(entity => {
          entityListByDepth.push(new EntityDepthCouple(entity, this.getDistanceFromCamera(entity)));
       });
 
       entityListByDepth.sort((a, b) => {
          if (a.depth < b.depth) {
-            return -1;
-         } else if (a.depth > b.depth) {
             return 1;
+         } else if (a.depth > b.depth) {
+            return -1;
          } else {
             return 0;
          }
