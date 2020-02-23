@@ -14,6 +14,8 @@ export class Renderer {
       this.cameraAngle = 0;
       this.cameraPosition = new Coord(0, 0);
       this.entityList = entityList;
+      this.canvasHeight = ctx.canvas.height;
+      this.canvasWidth = ctx.canvas.width;
 //    this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
    }
 
@@ -69,7 +71,8 @@ export class Renderer {
          this.cameraAngle += Math.PI*2;
       }
       this.ctx.fillStyle = "#111111";
-      this.ctx.fillRect(0,0,500,500)
+      this.ctx.fillRect(0,0,this.canvasWidth, this.canvasHeight);
+      
       class EntityDepthCouple {
          /**
           * @function constructor
@@ -106,9 +109,9 @@ export class Renderer {
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
 
-            let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, 500);
+            let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, this.canvasHeight);
             x -= scaledTextureWidth / 2;
-            let y = (500 / 2) - (scaledTextureHeight / 2);
+            let y = (this.canvasHeight / 2) - (scaledTextureHeight / 2);
 
             this.ctx.drawImage(entityDepthCouple.entity.texture, x, y, scaledTextureWidth, scaledTextureHeight);
          }
