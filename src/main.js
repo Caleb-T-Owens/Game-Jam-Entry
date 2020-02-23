@@ -1,36 +1,37 @@
-import {Renderer} from "./renderer.js";
+import { Renderer } from "./renderer.js";
 import { Entity } from "./entity.js";
 import { Coord } from "./coord.js";
+import { Helper } from "./helper.js";
+import { Textures } from "./textures.js";
+import { Sounds } from "./sounds.js";
+
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
-let tree = document.createElement("img");
-tree.height = 500;
-tree.width = 200;
-tree.src = "./tree.png";
 
 let post = () => {
 
 };
 
-let entityList = [
-   new Entity(new Coord(5,0), tree, "tree"),
-   new Entity(new Coord(5,5), tree, "tree"),
-   new Entity(new Coord(5,3), tree, "tree"),
-   new Entity(new Coord(2,8), tree, "tree"),
-   new Entity(new Coord(1,2), tree, "tree"),
-   new Entity(new Coord(0,5), tree, "tree"),
-];
+let entityList = [];
+
+for (let i = 0; i!=10000; ++i) {
+   let x = Helper.map(Math.random(), 0, 1, -100, 100);
+   let y = Helper.map(Math.random(), 0, 1, -100, 100);
+
+   entityList.push(new Entity(new Coord(x, y), Textures.tree, "tree"));
+}
 
 let renderer = new Renderer(post, ctx, entityList);
-renderer.loop();
 
-document.addEventListener("keyup", (event) => {
+setInterval(function() {renderer.loop();}, 30);
+
+Sounds.heartbeat.loop();
+
+document.addEventListener("keydown", (event) => {
    if (event.key == "w") {
       renderer.cameraPosition.x += 0.2;
-      renderer.loop();
    }
    if (event.key == "s") {
-      renderer.cameraAngle += 0.26;
-      renderer.loop();
+      renderer.cameraAngle += 0.2;
    }
 });
