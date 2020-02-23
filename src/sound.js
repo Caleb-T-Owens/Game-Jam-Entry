@@ -8,6 +8,7 @@ export class Sound {
       this.duration = sound.duration;
       this.isLooping = false;
       this.loopingInterval = 0;
+      this.sound.preservesPitch = true;
    }
 
    play () {
