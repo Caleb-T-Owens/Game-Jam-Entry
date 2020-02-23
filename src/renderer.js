@@ -1,5 +1,6 @@
-import {Entity} from "./entity.js";
-import {Coord} from "./coord.js";
+import { Entity } from "./entity.js";
+import { Coord } from "./coord.js";
+import { Helper } from "./helper.js";
 export class Renderer {
    /**
     * @function constructor
@@ -60,19 +61,6 @@ export class Renderer {
       return Math.sqrt(((entity.coords.x - this.cameraPosition.x)^2)+((entity.coords.y - this.cameraPosition.y)^2));
    }
 
-   /**
-    * @function map
-    * @param {Number} value 
-    * @param {Number} istart 
-
-    * @param {Number} iend 
-    * @param {Number} ostart 
-    * @param {Number} oend 
-    */
-   map (value, istart, iend, ostart, oend) { // Needs to be added to a helper class at some point, it isn't specific to this class in any way
-      return ostart + (oend - ostart) * ((value - istart) / (iend - istart));
-   } 
-
    loop () {
       if (this.cameraAngle > Math.PI) {
          this.cameraAngle -= Math.PI*2;
@@ -118,7 +106,7 @@ export class Renderer {
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
 
-            let x = this.map(angleRelativeToCamera, -0.79, 0.79, 0, 500);
+            let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, 500);
             x -= scaledTextureWidth / 2;
             let y = (500 / 2) - (scaledTextureHeight / 2);
 
