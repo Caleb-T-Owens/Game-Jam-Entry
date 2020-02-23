@@ -5,14 +5,15 @@ export class Renderer {
     * @function constructor
     * @param {function} post 
     * @param {CanvasRenderingContext2D} ctx 
+    * @param {Array} entityList
     */
-   constructor (post, ctx) {
+   constructor (post, ctx, entityList) {
       this.post = post;
       this.ctx = ctx;
       this.cameraAngle = 0;
       this.cameraPosition = new Coord(0, 0);
-      this.entityList = [];
-      this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
+      this.entityList = entityList;
+//    this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
    }
 
    /**
@@ -68,7 +69,7 @@ export class Renderer {
     * @param {Number} ostart 
     * @param {Number} oend 
     */
-   static map (value, istart, iend, ostart, oend) { // Needs to be added to a helper class at some point, it isn't specific to this class in any way
+   map (value, istart, iend, ostart, oend) { // Needs to be added to a helper class at some point, it isn't specific to this class in any way
       return ostart + (oend - ostart) * ((value - istart) / (iend - istart));
    } 
 
@@ -86,7 +87,7 @@ export class Renderer {
       }
 
       let entityListByDepth = [];
-
+      console.log(this.entityList);
       this.entityList.forEach(entity => {
          entityListByDepth.push(new EntityDepthCouple(entity, this.getDistanceFromCamera(entity)));
       });
