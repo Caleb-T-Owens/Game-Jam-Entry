@@ -102,7 +102,7 @@ export class Renderer {
          let angleRelativeToCamera = this.getAngleRelativeToTheCamera(entityDepthCouple.entity);
          if ((angleRelativeToCamera < 0.90) || (angleRelativeToCamera > -0.90)) {
 
-            let scale = 1/this.getDistanceFromCamera(entityDepthCouple.entity);
+            let scale = 1/entityDepthCouple.depth;
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
 
