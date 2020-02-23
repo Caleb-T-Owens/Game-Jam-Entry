@@ -74,6 +74,12 @@ export class Renderer {
    } 
 
    loop () {
+      if (this.cameraAngle > Math.PI) {
+         this.cameraAngle -= Math.PI*2;
+      }
+      if (this.cameraAngle < -Math.PI) {
+         this.cameraAngle += Math.PI*2;
+      }
       this.ctx.fillStyle = "#111111";
       this.ctx.fillRect(0,0,500,500)
       class EntityDepthCouple {
