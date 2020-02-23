@@ -70,8 +70,16 @@ export class Renderer {
       if (this.cameraAngle < -Math.PI) {
          this.cameraAngle += Math.PI*2;
       }
+
       this.ctx.fillStyle = "#1a1a1a";
       this.ctx.fillRect(0,0,this.canvasWidth, this.canvasHeight);
+
+      let gradient = this.ctx.createLinearGradient(this.canvasWidth/2, this.canvasHeight/2, this.canvasWidth/2, this.canvasHeight);
+      gradient.addColorStop(0, "#1a1a1a");
+      gradient.addColorStop(0.3, "#1b2f1b");
+
+      this.ctx.fillStyle = gradient;
+      this.ctx.fillRect(0, this.canvasHeight/2, this.canvasWidth, this.canvasHeight/2);
 
       class EntityDepthCouple {
          /**
@@ -120,6 +128,13 @@ export class Renderer {
          }
 
       });
+
+      gradient = this.ctx.createRadialGradient(this.canvasWidth/2 ,this.canvasHeight/2, 1, this.canvasWidth/2 ,this.canvasHeight/2, 1000);
+      gradient.addColorStop(0, "rgba(0,0,0,0)");
+      gradient.addColorStop(1, "#000000");
+
+      this.ctx.fillStyle = gradient;
+      this.ctx.fillRect(0,0, this.canvasWidth, this.canvasHeight);
 
       this.post();
    }
