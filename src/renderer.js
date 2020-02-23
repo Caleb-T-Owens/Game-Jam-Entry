@@ -64,6 +64,8 @@ export class Renderer {
    }
 
    loop () {
+      let renderDistance = 50;
+
       if (this.cameraAngle > Math.PI) {
          this.cameraAngle -= Math.PI*2;
       }
@@ -71,6 +73,7 @@ export class Renderer {
          this.cameraAngle += Math.PI*2;
       }
 
+      this.ctx.globalAlpha = 1;
       this.ctx.fillStyle = "#1a1a1a";
       this.ctx.fillRect(0,0,this.canvasWidth, this.canvasHeight);
 
@@ -97,7 +100,7 @@ export class Renderer {
 
       this.entityList.forEach(entity => {
          let depth = this.getDistanceFromCamera(entity);
-         if (depth < 50) {
+         if (depth < renderDistance) {
             entityListByDepth.push(new EntityDepthCouple(entity, depth));
          }
       });
@@ -119,7 +122,7 @@ export class Renderer {
             let scale = 1/entityDepthCouple.depth;
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
-
+            this.ctx.globalAlpha = Helper.map(entityDepthCouple.depth, 0, 50, 1, 0);
             let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, this.canvasWidth);
             x -= scaledTextureWidth / 2;
             let y = (this.canvasHeight / 2) - (scaledTextureHeight / 2);
@@ -133,6 +136,7 @@ export class Renderer {
       gradient.addColorStop(0, "rgba(0,0,0,0)");
       gradient.addColorStop(1, "#000000");
 
+      this.ctx.globalAlpha = 1;
       this.ctx.fillStyle = gradient;
       this.ctx.fillRect(0,0, this.canvasWidth, this.canvasHeight);
 
