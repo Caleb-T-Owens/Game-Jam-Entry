@@ -100,7 +100,7 @@ export class Renderer {
 
       entityListByDepth.forEach((entityDepthCouple) => {
          let angleRelativeToCamera = this.getAngleRelativeToTheCamera(entityDepthCouple.entity);
-         if ((angleRelativeToCamera < 0.90) || (angleRelativeToCamera > -0.90)) {
+         if ((angleRelativeToCamera < 0.100) || (angleRelativeToCamera > -0.100)) {
 
             let scale = 1/entityDepthCouple.depth;
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
