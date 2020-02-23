@@ -70,7 +70,7 @@ export class Renderer {
       if (this.cameraAngle < -Math.PI) {
          this.cameraAngle += Math.PI*2;
       }
-      this.ctx.fillStyle = "#111111";
+      this.ctx.fillStyle = "#1a1a1a";
       this.ctx.fillRect(0,0,this.canvasWidth, this.canvasHeight);
 
       class EntityDepthCouple {
@@ -88,7 +88,10 @@ export class Renderer {
       let entityListByDepth = [];
 
       this.entityList.forEach(entity => {
-         entityListByDepth.push(new EntityDepthCouple(entity, this.getDistanceFromCamera(entity)));
+         let depth = this.getDistanceFromCamera(entity);
+         if (depth < 50) {
+            entityListByDepth.push(new EntityDepthCouple(entity, depth));
+         }
       });
 
       entityListByDepth.sort((a, b) => {
