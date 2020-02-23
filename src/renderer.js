@@ -120,14 +120,14 @@ export class Renderer {
          if ((angleRelativeToCamera < 0.100) || (angleRelativeToCamera > -0.100)) {
 
             let scale = 1/entityDepthCouple.depth;
-            let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
-            let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
+            let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.texture.height * scale);
+            let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.texture.width * scale);
             this.ctx.globalAlpha = Helper.map(entityDepthCouple.depth, 0, 50, 1, 0);
             let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, this.canvasWidth);
             x -= scaledTextureWidth / 2;
             let y = (this.canvasHeight / 2) - (scaledTextureHeight / 2);
 
-            this.ctx.drawImage(entityDepthCouple.entity.texture, x, y, scaledTextureWidth, scaledTextureHeight);
+            this.ctx.drawImage(entityDepthCouple.entity.texture.texture, x, y, scaledTextureWidth, scaledTextureHeight);
          }
 
       });
