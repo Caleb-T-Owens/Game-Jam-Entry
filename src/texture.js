@@ -6,7 +6,7 @@ export class Texture {
     * @param {Number} height 
     */
    constructor (textureURL, width, height) {
-      this.texture = new HTMLImageElement();
+      this.texture = document.createElement("img")
       this.texture.src = textureURL;
       this.texture.width = width;
       this.texture.height = height;
