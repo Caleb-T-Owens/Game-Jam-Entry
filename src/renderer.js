@@ -109,7 +109,7 @@ export class Renderer {
             let scaledTextureHeight = Math.floor(entityDepthCouple.entity.texture.height * scale);
             let scaledTextureWidth = Math.floor(entityDepthCouple.entity.texture.width * scale);
 
-            let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, this.canvasHeight);
+            let x = Helper.map(angleRelativeToCamera, -0.79, 0.79, 0, this.canvasWidth);
             x -= scaledTextureWidth / 2;
             let y = (this.canvasHeight / 2) - (scaledTextureHeight / 2);
 
