@@ -60,7 +60,7 @@ export class Renderer {
     * @param {Entity} entity 
     */
    getDistanceFromCamera (entity) {
-      return Math.sqrt(((entity.coords.x - this.cameraPosition.x)^2)+((entity.coords.y - this.cameraPosition.y)^2));
+      return Math.sqrt(Math.pow(entity.coords.x - this.cameraPosition.x, 2) + Math.pow(entity.coords.y - this.cameraPosition.y, 2));
    }
 
    loop () {
@@ -72,7 +72,7 @@ export class Renderer {
       }
       this.ctx.fillStyle = "#111111";
       this.ctx.fillRect(0,0,this.canvasWidth, this.canvasHeight);
-      
+
       class EntityDepthCouple {
          /**
           * @function constructor
