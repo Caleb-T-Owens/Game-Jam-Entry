@@ -4,6 +4,8 @@ import { Coord } from "./coord.js";
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let tree = document.createElement("img");
+tree.height = 256;
+tree.width = 256;
 tree.src = "./tree.png";
 
 let post = () => {
