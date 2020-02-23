@@ -95,7 +95,7 @@ export class Renderer {
       }
 
       let entityListByDepth = [];
-      console.log(this.entityList);
+      
       this.entityList.forEach(entity => {
          entityListByDepth.push(new EntityDepthCouple(entity, this.getDistanceFromCamera(entity)));
       });
