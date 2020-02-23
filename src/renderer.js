@@ -79,7 +79,7 @@ export class Renderer {
 
       let gradient = this.ctx.createLinearGradient(this.canvasWidth/2, this.canvasHeight/2, this.canvasWidth/2, this.canvasHeight);
       gradient.addColorStop(0, "#1a1a1a");
-      gradient.addColorStop(0.3, "#1b2f1b");
+      gradient.addColorStop(0.3, "#192519");
 
       this.ctx.fillStyle = gradient;
       this.ctx.fillRect(0, this.canvasHeight/2, this.canvasWidth, this.canvasHeight/2);
