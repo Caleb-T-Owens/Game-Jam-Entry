@@ -8,6 +8,10 @@ import { Sounds } from "./sounds.js";
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 
+// This is a test and not final code
+
+
+
 let post = () => {
 
 };
