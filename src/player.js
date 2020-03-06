@@ -19,6 +19,7 @@ export class Player {
       this.direction = startingDirection;
       this.renderer = renderer;
 
+      // Keypress constants
       this.isAPressed = false;
       this.isSPressed = false;
       this.isWPressed = false;
@@ -28,7 +29,7 @@ export class Player {
       this.WPressedIntervalId;
       this.RPressedIntervalId;
 
-
+      // Event listeners
       this.keyDownEvent = document.addEventListener("keydown", this.keyPressed);
       this.keyUpEvent = document.addEventListener("keyup", this.keyLifted);
    }
