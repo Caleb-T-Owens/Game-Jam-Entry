@@ -1,6 +1,10 @@
 import { Coord } from "./coord.js";
 import { Renderer } from "./renderer.js";
 
+/**
+ * I really dont like this code, it just feels icky and it stresses me out to read.
+ * It would need to be refactored if anything was to be done with this game
+ */
 export class Player {
    
    /**
@@ -29,6 +33,10 @@ export class Player {
       this.keyUpEvent = document.addEventListener("keyup", this.keyLifted);
    }
 
+   /**
+    * 
+    * @param {KeyDownEvent} event 
+    */
    keyPressed(event) {
       if (event.key == "w") {
          if ((renderer.cameraAngle>0)&&(renderer.cameraAngle<=1.57)) {
@@ -70,6 +78,10 @@ export class Player {
       }
    }
 
+   /**
+    * 
+    * @param {KeyUpEvent} event 
+    */
    keyLifted(event) {
       
       if (event.key == "s") {
