@@ -31,7 +31,7 @@ export class Renderer {
       this.cameraAngle += event.detail.angle;
    }
 
-   updateCameraPosition (event) {
+   updateCameraPosition (event) { // Could do with a touch up
 
       if ((this.cameraAngle > 0) && (this.cameraAngle <= 1.57)) { // x+ y+
          let movementBoundary = Helper.map(this.cameraAngle, 0, 1.57, 0, event.detail.move);
