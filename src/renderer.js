@@ -16,7 +16,16 @@ export class Renderer {
       this.entityList = entityList;
       this.canvasHeight = ctx.canvas.height;
       this.canvasWidth = ctx.canvas.width;
+      let scope = this;
+      document.addEventListener("updateCameraPosition", function (event) { // This is not ideal and very icky and I do not like it.
+         scope.updateCameraPosition(event);
+      });
+
 //    this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
+   }
+
+   updateCameraPosition (event) {
+      this.cameraAngle += event.detail.angle;
    }
 
    /**

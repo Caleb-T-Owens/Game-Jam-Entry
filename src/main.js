@@ -4,6 +4,7 @@ import { Coord } from "./coord.js";
 import { Helper } from "./helper.js";
 import { Textures } from "./textures.js";
 import { Sounds } from "./sounds.js";
+import { Player } from "./player.js";
 
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -32,21 +33,4 @@ setInterval(function() {renderer.loop();}, 30);
 Sounds.heartbeat.loop();
 Sounds.heartbeat.sound.playbackRate = 1;
 
-document.addEventListener("keydown", (event) => {
-   if (event.key == "w") {
-      if ((renderer.cameraAngle>0)&&(renderer.cameraAngle<=1.57)) {
-      let movementBoundary = Helper.map(renderer.cameraAngle, 0,1.57,0,1);
-      let moveX = 1 - movementBoundary;
-      let moveY = movementBoundary;
-
-      renderer.cameraPosition.x += moveX;
-      renderer.cameraPosition.y += moveY;
-      }
-   }
-   if (event.key == "s") {
-      renderer.cameraAngle += 0.2;
-   }
-   if (event.key == "a") {
-      renderer.cameraAngle -= 0.2;
-   }
-});
+let mainPlayer = new Player(new Coord(0,0), 0, renderer);
