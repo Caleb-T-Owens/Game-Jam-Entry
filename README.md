@@ -10,14 +10,14 @@ I am writing a summery about my experiences and all that I learned and I will li
 #### Information
 The game is very dark because it was going to be a horror game (*there are no horror elements implemented*) so if your monitor has bad contrast or black trueness you will struggle to see.
 
-Another thing to mention is that you can only move forward 0 to 90 degrees left, think moving forwards away from 0,0 in +x and +y quadrent. This is because the math I figgured out only covered moving in that direction.
+Another thing to mention is that you can only move forward 0 to 90 degrees left, think moving forwards away from 0,0 in +x and +y quadrant. This is because the math I figured out only covered moving in that direction.
 
-To move use `a` to look left `s` to look right, `w` to move forward, and `r` to move back (I think I implemented that). Those keys are the colemak wasd keys you can change them in the main js file. It doesnt have any walking speed so it looks around and moves `on key down` so if you system does multiple letter presses after you hold a key depending on your browser it can move arround by holding a key down.
+To move use `a` to look left `s` to look right, `w` to move forward, and `r` to move back (I think I implemented that). Those keys are the colemak wasd keys you can change them in the main js file. It doesn't have any walking speed so it looks around and moves `on key down` so if you system does multiple letter presses after you hold a key depending on your browser it can move around by holding a key down.
 
-This was only programmed with the latest version of chrome in mind so you may have differnt experiences depending on your browser
+This was only programmed with the latest version of chrome in mind so you may have different experiences depending on your browser
 
 ### The easy way
 The easy way to run the game would be to use the [gitbook](https://pinkflufflyllama.github.io/Game-Jam-Entry/src/index.html) which will have the latest commits and pushes.
 
 ### The harder way
-To run this locally you will need to run a http server because, atleast, chome doesnt allow loading es6 modules locally
+To run this locally you will need to run a http server because, at least, chrome doesn't allow loading es6 modules locally
