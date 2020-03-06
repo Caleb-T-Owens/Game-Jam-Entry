@@ -10,7 +10,7 @@ I am writing a summery about my experiences and all that I learned and I will li
 #### Information
 The game is very dark because it was going to be a horror game (*there are no horror elements implemented*) so if your monitor has bad contrast or black trueness you will struggle to see.
 
-To move use `a` to look left `s` to look right, `w` to move forward, and `r` to move back (I think I implemented that). I use those keys because they are the wasd for colemak keyboards;
+To move use `a` to look left `s` to look right, `w` to move forward, and `r` to move back. I use those keys because they are the wasd for colemak keyboards;
 
 This was only programmed with the latest version of chrome in mind so you may have different experiences depending on your browser
 
