@@ -6,7 +6,7 @@ import { Renderer } from "./renderer.js";
  * It would need to be refactored if anything was to be done with this game
  */
 export class Player {
-   
+
    /**
     * 
     * @param {Coord} startingCoords 
@@ -14,7 +14,7 @@ export class Player {
     * @param {Renderer} renderer
     * @param {HTMLCanvasElement} canvas
     */
-   constructor (startingCoords, startingDirection, type, renderer, canvas) {
+   constructor(startingCoords, startingDirection, type, renderer, canvas) {
       this.coords = startingCoords;
       this.direction = startingDirection;
       this.renderer = renderer;
@@ -40,24 +40,43 @@ export class Player {
     */
    keyPressed(event) {
       if (event.key == "w") {
-         if ((renderer.cameraAngle>0)&&(renderer.cameraAngle<=1.57)) {
-         let movementBoundary = Helper.map(renderer.cameraAngle, 0,1.57,0,1);
-         let moveX = 1 - movementBoundary;
-         let moveY = movementBoundary;
-   
-         renderer.cameraPosition.x += moveX;
-         renderer.cameraPosition.y += moveY;
+         if (!this.isWPressed) {
+            this.isWPressed = true;
+            this.WPressedIntervalId = setInterval(function () {
+               let event = new CustomEvent("updateCameraPosition", {detail: {
+                  move: 0.5
+               }});
+               document.dispatchEvent(event);
+
+            }, 30);
          }
+
+      }
+
+      if (event.key == "r") {
+         if (!this.isRPressed) {
+            this.isRPressed = true;
+            this.RPressedIntervalId = setInterval(function () {
+               let event = new CustomEvent("updateCameraPosition", {detail: {
+                  move: -0.5
+               }});
+               document.dispatchEvent(event);
+
+            }, 30);
+         }
+
       }
 
       if (event.key == "s") {
          if (!this.isSPressed) {
             this.isSPressed = true;
-            this.SPressedIntervalId = setInterval(function() {
-
-               let event = new CustomEvent("updateCameraPosition", {
-                  detail: { angle: 0.05,
-               }});
+            this.SPressedIntervalId = setInterval(function () {
+               this.direction += 0.05;
+               let event = new CustomEvent("updateCameraAngle", {
+                  detail: {
+                     angle: 0.05,
+                  }
+               });
                document.dispatchEvent(event);
 
             }, 30);
@@ -67,11 +86,13 @@ export class Player {
       if (event.key == "a") {
          if (!this.isAPressed) {
             this.isAPressed = true;
-            this.APressedIntervalId = setInterval(function() {
-               
-               let event = new CustomEvent("updateCameraPosition", {
-                  detail: { angle: -0.05,
-               }});
+            this.APressedIntervalId = setInterval(function () {
+               this.direction += -0.05;
+               let event = new CustomEvent("updateCameraAngle", {
+                  detail: {
+                     angle: -0.05,
+                  }
+               });
                document.dispatchEvent(event);
 
             }, 30);
@@ -84,7 +105,14 @@ export class Player {
     * @param {KeyUpEvent} event 
     */
    keyLifted(event) {
-      
+      if (event.key == "w") {
+         clearInterval(this.WPressedIntervalId);
+         this.isWPressed = false;
+      }
+      if (event.key == "r") {
+         clearInterval(this.RPressedIntervalId);
+         this.isRPressed = false;
+      }
       if (event.key == "s") {
          clearInterval(this.SPressedIntervalId);
          this.isSPressed = false;
@@ -94,11 +122,5 @@ export class Player {
          this.isAPressed = false;
       }
    }
-
-   /**
-    * Adds an amount to the renderer's camera angle
-    * @param {Number} angle An angle in radians 
-    */
-
 
 }

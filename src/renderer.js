@@ -17,15 +17,54 @@ export class Renderer {
       this.canvasHeight = ctx.canvas.height;
       this.canvasWidth = ctx.canvas.width;
       let scope = this;
-      document.addEventListener("updateCameraPosition", function (event) { // This is not ideal and very icky and I do not like it.
-         scope.updateCameraPosition(event);
+      document.addEventListener("updateCameraAngle", function (event) { // This is not ideal and very icky and I do not like it.
+         scope.updateCameraAngle(event);
       });
+      document.addEventListener("updateCameraPosition", function (event) {
+         scope.updateCameraPosition(event);
+      })
 
 //    this.loopInterval = setInterval(this.loop, 25); // That is 1/30 of a second right?
    }
 
-   updateCameraPosition (event) {
+   updateCameraAngle (event) {
       this.cameraAngle += event.detail.angle;
+   }
+
+   updateCameraPosition (event) {
+
+      if ((this.cameraAngle > 0) && (this.cameraAngle <= 1.57)) { // x+ y+
+         let movementBoundary = Helper.map(this.cameraAngle, 0, 1.57, 0, event.detail.move);
+         let moveX = event.detail.move - movementBoundary;
+         let moveY = movementBoundary;
+
+         this.cameraPosition.x += moveX;
+         this.cameraPosition.y += moveY;
+      }
+      if ((this.cameraAngle > -1.57) && (this.cameraAngle <= 0)) { // x+ y-
+         let movementBoundary = Helper.map(this.cameraAngle, 0, -1.57, 0, -event.detail.move);
+         let moveX = event.detail.move + movementBoundary;
+         let moveY = movementBoundary;
+
+         this.cameraPosition.x += moveX;
+         this.cameraPosition.y += moveY;
+      }
+      if ((this.cameraAngle > 1.57) && (this.cameraAngle <= Math.PI)) { // x- y+
+         let movementBoundary = Helper.map(this.cameraAngle, 1.57, Math.PI, event.detail.move, 0);
+         let moveX = event.detail.move - movementBoundary;
+         let moveY = movementBoundary;
+
+         this.cameraPosition.x -= moveX;
+         this.cameraPosition.y += moveY;
+      }
+      if ((this.cameraAngle > -Math.PI) && (this.cameraAngle <= -1.57)) { // x- y-
+         let movementBoundary = Helper.map(this.cameraAngle, -1.57, -Math.PI, -event.detail.move, 0);
+         let moveX = event.detail.move + movementBoundary;
+         let moveY = movementBoundary;
+
+         this.cameraPosition.x -= moveX;
+         this.cameraPosition.y += moveY;
+      }
    }
 
    /**
