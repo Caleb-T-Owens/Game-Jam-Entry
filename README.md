@@ -21,3 +21,6 @@ The easy way to run the game would be to use the [gitbook](https://pinkflufflyll
 
 ### The harder way
 To run this locally you will need to run a http server because, at least, chrome doesn't allow loading es6 modules locally
+#### How to install apache2 http server on ubuntu 19
+1. Install apache2 `sudo apt install apache2`. If you have a firewall you may need to allow port 80.
+2. Put the repo in the `var/www/html` or inside `var/www/html` make a folder link to the repo folder `ln -s LINK_TO_REPO LINK_NAME`. I use the latter method but it may be considered less secure.
