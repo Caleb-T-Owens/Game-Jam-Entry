@@ -13,8 +13,9 @@ export class Player {
     * @param {Number} startingDirection
     * @param {Renderer} renderer
     * @param {HTMLCanvasElement} canvas
+    * @param {Boolean} isMainPlayer Sets wether or not is is the main player, either enables or disables the key event listeners
     */
-   constructor(startingCoords, startingDirection, type, renderer, canvas) {
+   constructor(startingCoords, startingDirection, type, renderer, canvas, isMainPlayer) {
       this.coords = startingCoords;
       this.direction = startingDirection;
       this.renderer = renderer;
@@ -30,8 +31,11 @@ export class Player {
       this.RPressedIntervalId;
 
       // Event listeners
-      this.keyDownEvent = document.addEventListener("keydown", this.keyPressed);
-      this.keyUpEvent = document.addEventListener("keyup", this.keyLifted);
+      // These event listeners are chill
+      if (isMainPlayer) {
+         this.keyDownEvent = document.addEventListener("keydown", this.keyPressed);
+         this.keyUpEvent = document.addEventListener("keyup", this.keyLifted);
+      }
    }
 
    /**
