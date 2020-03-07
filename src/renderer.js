@@ -33,6 +33,7 @@ export class Renderer {
 
    updateCameraPosition (event) { // Could do with a touch up
                                   // This should really be in the Player class
+                                  // The slight variations in the opperations make it hard to have these ifs be their own function
 
       if ((this.cameraAngle > 0) && (this.cameraAngle <= 1.57)) { // x+ y+
          let movementBoundary = Helper.map(this.cameraAngle, 0, 1.57, 0, event.detail.move);
