@@ -33,4 +33,4 @@ setInterval(function() {renderer.loop();}, 30);
 Sounds.heartbeat.loop();
 Sounds.heartbeat.sound.playbackRate = 1;
 
-let mainPlayer = new Player(new Coord(0,0), 0, renderer);
+let mainPlayer = new Player(new Coord(0,0), 0, renderer, true);
