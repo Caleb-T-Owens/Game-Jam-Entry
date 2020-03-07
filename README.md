@@ -16,6 +16,7 @@ This was only programmed with the latest version of chrome in mind so you may ha
 
 ### The easy way
 The easy way to run the game would be to use the [gitbook](https://pinkflufflyllama.github.io/Game-Jam-Entry/src/index.html) which will have the latest commits and pushes.
+`index.html` is the provided starter page and `main.js` is the starting point for the code
 
 ### The harder way
 To run this locally you will need to run a http server because, at least, chrome doesn't allow loading es6 modules locally
