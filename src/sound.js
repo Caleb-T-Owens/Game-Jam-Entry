@@ -12,7 +12,8 @@ export class Sound {
    }
 
    play () {
-      this.sound.play();
+      // Modern browsers don't allow you to play sounds before someone interacts with the document
+      // this.sound.play();
    }
 
    loop () {
